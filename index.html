@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover 가 없으면 env(safe-area-inset-*) 이 항상 0으로 계산된다.
+     이게 빠지면 iOS 에서 하단 고정 바가 홈 인디케이터에 가려진다 -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>한강 리버파크 시티 | 방문예약 상담</title>
+<meta name="description" content="한강 리버파크 시티 분양 안내 · 방문예약 상담 신청">
+
+<!-- 유입이 100% 카톡·문자 링크라 OG 미리보기가 곧 첫인상이다.
+     og:image 는 절대주소만 허용되므로 배포 주소가 확정되면 아래 두 줄만 교체한다.
+     카카오는 SVG 를 렌더하지 않으므로 반드시 PNG/JPG 를 건다 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="한강 리버파크 시티">
+<meta property="og:description" content="방문예약 상담 신청 · 사전예약제 운영">
+<meta property="og:image" content="https://clairepark96.github.io/riverpark-demo/images/hero.jpeg">
+<meta property="og:url" content="https://clairepark96.github.io/riverpark-demo/">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <!-- 첫 화면 이미지라 lazy 를 걸면 오히려 늦는다 -->
+    <img src="images/hero.jpeg" alt="한강 리버파크 시티" width="1024" height="541" fetchpriority="high">
+  </header>
+
+  <section class="notice">
+    <p class="notice__title">방문 전 사전예약 부탁드립니다</p>
+    <p class="notice__body">
+      쾌적한 상담을 위해 예약제로 운영되고 있습니다.<br>
+      아래 <b>방문예약 신청</b> 또는 전화로 문의 주시면
+      담당 상담사가 안내해 드립니다.
+    </p>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec__title">사업개요</h2>
+    <div class="sec__body">
+      <img src="images/main_1.jpeg" alt="주간 조감도" width="765" height="1024" loading="lazy">
+      <img src="images/main_2.jpeg" alt="단지 입구" width="572" height="1024" loading="lazy">
+      <img src="images/main_3.jpeg" alt="야경 조감도" width="765" height="1024" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec__title">입지안내</h2>
+    <div class="sec__body">
+      <img src="images/loc_1.jpeg" alt="광역 입지" width="765" height="1024" loading="lazy">
+      <img src="images/loc_2.jpeg" alt="역세권" width="572" height="1024" loading="lazy">
+      <img src="images/loc_3.jpeg" alt="공원·학군" width="765" height="1024" loading="lazy">
+    </div>
+  </section>
+
+  <!-- grid2 레이아웃 확인용 섹션. 실제 납품 시엔 대부분 full 이다 -->
+  <section class="sec">
+    <h2 class="sec__title">프리미엄</h2>
+    <div class="sec__body sec__body--grid2">
+      <img src="images/pre_1.jpeg" alt="피트니스" width="765" height="1024" loading="lazy">
+      <img src="images/pre_2.jpeg" alt="라운지" width="765" height="1024" loading="lazy">
+      <img src="images/pre_3.jpeg" alt="중정 조경" width="765" height="1024" loading="lazy">
+      <img src="images/pre_4.jpeg" alt="스카이라운지" width="765" height="1024" loading="lazy">
+    </div>
+  </section>
+
+  <!-- 타입안내는 평면도가 이어 붙으면 경계가 안 보여서 항목별 구분선이 필요하다 -->
+  <section class="sec">
+    <h2 class="sec__title">타입안내</h2>
+    <div class="sec__body sec__body--divider">
+      <img src="images/type_1.svg" alt="타입안내 1" width="1080" height="1440" loading="lazy">
+      <img src="images/type_2.svg" alt="타입안내 2" width="1080" height="1920" loading="lazy">
+      <img src="images/type_3.svg" alt="타입안내 3" width="1080" height="1440" loading="lazy">
+      <img src="images/type_4.svg" alt="타입안내 4" width="1080" height="1920" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2 class="sec__title">부동산 시황</h2>
+    <div class="sec__body">
+      <img src="images/etc_1.svg" alt="부동산 시황 1" width="1080" height="1440" loading="lazy">
+      <img src="images/etc_2.svg" alt="부동산 시황 2" width="1080" height="1920" loading="lazy">
+    </div>
+  </section>
+
+  <section class="sec" id="apply">
+    <h2 class="sec__title">방문예약 신청</h2>
+
+    <form class="form" id="leadForm" novalidate>
+      <label class="field">
+        <span class="field__label">이름</span>
+        <input name="name" type="text" required maxlength="20" autocomplete="name" placeholder="성함을 입력해 주세요">
+      </label>
+
+      <label class="field">
+        <span class="field__label">연락처</span>
+        <!-- 3분할 입력은 모바일에서 포커스 이동이 튀어서 이탈이 난다. 단일 필드 + 자동 하이픈 -->
+        <input name="phone" type="tel" inputmode="numeric" required
+               maxlength="13" autocomplete="tel" placeholder="010-0000-0000">
+      </label>
+
+      <label class="field">
+        <span class="field__label">방문일자</span>
+        <!-- 네이티브 date 피커. 직접 만들면 iOS/Android 양쪽에서 다 깨진다 -->
+        <input name="date" type="date" required>
+      </label>
+
+      <label class="field">
+        <span class="field__label">방문시간</span>
+        <select name="time" required>
+          <option value="">시간을 선택해 주세요</option>
+          <option>10시 이전</option>
+          <option>10:00 ~ 11:00</option>
+          <option>11:00 ~ 12:00</option>
+          <option>13:00 ~ 14:00</option>
+          <option>14:00 ~ 15:00</option>
+          <option>15:00 ~ 16:00</option>
+          <option>16:00 이후</option>
+        </select>
+      </label>
+
+      <label class="agree">
+        <input name="agree" type="checkbox" required>
+        <span>개인정보 수집·이용에 동의합니다 <b>(필수)</b></span>
+      </label>
+      <details class="terms">
+        <summary>수집 항목 및 이용 목적 보기</summary>
+        <p>
+          수집 항목: 이름, 연락처, 방문 희망 일시<br>
+          이용 목적: 방문예약 확인 및 분양 상담 안내<br>
+          보유 기간: 상담 종료 후 즉시 파기<br>
+          동의를 거부하실 수 있으나 이 경우 방문예약 신청이 제한됩니다.
+        </p>
+      </details>
+
+      <p class="form__err" id="formErr" hidden></p>
+      <button class="btn btn--primary" type="submit">방문예약 신청하기</button>
+      <p class="form__help">
+        신청 버튼을 누르면 <b>문자앱이 열리며 내용이 자동 입력</b>됩니다.
+        전송 버튼을 눌러야 접수가 완료됩니다.
+      </p>
+    </form>
+  </section>
+
+  <footer class="foot">
+    <p>한강 리버파크 시티 분양홍보관</p>
+    <p class="foot__sub">본 홍보물의 내용은 관계기관 협의 과정에서 변경될 수 있습니다.</p>
+  </footer>
+
+</div>
+
+<!-- 플로팅 퀵메뉴 — 스크롤 어디서든 바로 연결 -->
+<nav class="quick">
+  <a class="quick__btn" href="#apply">예약</a>
+  <a class="quick__btn" href="tel:1600-0000">전화</a>
+  <a class="quick__btn" id="quickSms" href="#">문자</a>
+</nav>
+
+<!-- 하단 고정 바 — 전환의 대부분이 여기서 난다 -->
+<div class="bar">
+  <a class="bar__btn" href="tel:1600-0000">전화상담</a>
+  <a class="bar__btn bar__btn--primary" href="#apply">방문예약</a>
+</div>
+
+<script>
+// 현장별로 바뀌는 값. Step 5 에서 site.json 으로 뺄 자리 (지금은 하드코딩)
+const SITE = {
+  alias: '리버파크',       // 문자 본문용 축약명. 길면 LMS 로 넘어가 단가가 3배가 된다
+  tel: '1600-0000',        // 고객 → 상담사 대표번호
+  leadPhone: '01000000000' // 신청 문자 수신번호 (상담사)
+};
+
+const form = document.getElementById('leadForm');
+const errBox = document.getElementById('formErr');
+const phone = form.phone;
+
+// 지금은 010 만 존재한다(2G 종료로 011/016/019 는 전부 이관됨).
+// 유선번호는 문자 수신이 안 되므로 애초에 받지 않는다.
+const PHONE_RE = /^010-\d{4}-\d{4}$/;
+
+// 자동 하이픈. 입력 중 커서가 끝에 있는 것이 대부분이라 커서 복원은 생략
+phone.addEventListener('input', () => {
+  const d = phone.value.replace(/\D/g, '').slice(0, 11);
+  phone.value = d.length < 4 ? d
+    : d.length < 8 ? `${d.slice(0, 3)}-${d.slice(3)}`
+    : `${d.slice(0, 3)}-${d.slice(3, 7)}-${d.slice(7)}`;
+});
+
+// 과거 날짜 선택 차단. toISOString 은 UTC 기준이라 새벽에 하루 밀린다 → 로컬 기준 포맷 사용
+form.date.min = new Date().toLocaleDateString('sv-SE');
+
+// iOS 는 sms:번호&body=, Android 는 sms:번호?body= 로 구분자가 다르다.
+// 잘못 쓰면 본문이 통째로 무시되고 빈 문자앱만 열린다
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const smsLink = (text) =>
+  `sms:${SITE.leadPhone}${isIOS ? '&' : '?'}body=${encodeURIComponent(text)}`;
+
+document.getElementById('quickSms').href =
+  smsLink(`[${SITE.alias}] 분양 문의드립니다.`);
+
+// 브라우저 기본 검증 UI 는 iOS 에서 말풍선이 화면 밖에 뜨는 경우가 있어 직접 표시한다
+const rules = [
+  [() => form.name.value.trim(), '이름을 입력해 주세요.'],
+  [() => PHONE_RE.test(form.phone.value), '연락처를 010-0000-0000 형식으로 입력해 주세요.'],
+  [() => form.date.value, '방문일자를 선택해 주세요.'],
+  [() => form.time.value, '방문시간을 선택해 주세요.'],
+  [() => form.agree.checked, '개인정보 수집·이용에 동의해 주세요.'],
+];
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const failed = rules.find(([ok]) => !ok());
+  if (failed) {
+    errBox.textContent = failed[1];
+    errBox.hidden = false;
+    return;
+  }
+  errBox.hidden = true;
+
+  const body = [
+    `[${SITE.alias} 방문예약]`,
+    `성함: ${form.name.value.trim()}`,
+    `연락처: ${form.phone.value}`,
+    `방문: ${form.date.value} ${form.time.value}`,
+  ].join('\n');
+
+  // 개인정보가 서버를 거치지 않고 고객 폰 → 상담사 폰으로 직접 간다 (leadMode: 'sms')
+  location.href = smsLink(body);
+});
+</script>
+
+</body>
+</html>

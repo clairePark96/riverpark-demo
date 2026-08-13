@@ -1,0 +1,212 @@
+/* 스킨 간 차이는 전부 이 토큰만 교체해서 만든다 (Step 4).
+   레이아웃 규칙은 아래에 한 벌만 존재해야 한다 */
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --brand: #1b2a4a;
+  --brand-fg: #ffffff;
+  --accent: #c9a227;
+  --danger: #d92d20;
+  --radius: 4px;
+  --gap: 8px;
+  --pad: 20px;
+  --maxw: 560px;   /* PC 에서도 폰 폭으로 보이게 고정 */
+  --bar-h: 60px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Malgun Gothic", sans-serif;
+  -webkit-text-size-adjust: 100%;
+  /* 하단 고정 바에 마지막 콘텐츠가 가리지 않도록 확보 */
+  padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom) + 16px);
+}
+
+img { display: block; width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; }
+
+/* ---- 안내 문구 ---- */
+.notice {
+  padding: 24px var(--pad);
+  background: var(--brand);
+  color: var(--brand-fg);
+  text-align: center;
+}
+.notice__title {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.notice__body { margin: 0; font-size: 15px; opacity: 0.9; }
+
+/* ---- 섹션 ---- */
+.sec { padding: 36px 0 8px; }
+.sec__title {
+  margin: 0 0 20px;
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+.sec__title::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin: 12px auto 0;
+  background: var(--accent);
+}
+
+.sec__body--grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  padding: 0 var(--gap);
+}
+
+/* 평면도가 이어 붙으면 경계가 안 보인다 */
+.sec__body--divider img + img {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+/* ---- 폼 ---- */
+.form { padding: 0 var(--pad); }
+.field { display: block; margin-bottom: 16px; }
+.field__label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.field input,
+.field select {
+  width: 100%;
+  height: 50px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--fg);
+  /* iOS 는 16px 미만 입력창에 포커스가 가면 화면을 확대한다 */
+  font-size: 16px;
+  font-family: inherit;
+  appearance: none;
+}
+.field input:focus,
+.field select:focus { outline: 2px solid var(--brand); outline-offset: -2px; }
+
+.agree {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  margin: 20px 0 8px;
+  font-size: 14px;
+}
+.agree input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--brand);
+}
+
+.terms { font-size: 13px; color: var(--muted); }
+.terms summary { cursor: pointer; padding: 6px 0; }
+.terms p { margin: 4px 0 0; padding: 12px; background: #f7f8fa; border-radius: var(--radius); }
+
+.form__err {
+  margin: 16px 0 0;
+  padding: 12px;
+  border-radius: var(--radius);
+  background: #fef3f2;
+  color: var(--danger);
+  font-size: 14px;
+  font-weight: 600;
+}
+.form__help { margin: 12px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
+
+.btn {
+  display: block;
+  width: 100%;
+  height: 56px;
+  border: 0;
+  border-radius: var(--radius);
+  font-size: 17px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+.btn--primary { margin-top: 16px; background: var(--brand); color: var(--brand-fg); }
+
+/* ---- 푸터 ---- */
+.foot {
+  margin-top: 40px;
+  padding: 24px var(--pad);
+  background: #f7f8fa;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+.foot p { margin: 0; }
+.foot__sub { margin-top: 6px; font-size: 12px; opacity: 0.8; }
+
+/* ---- 하단 고정 바 ---- */
+.bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 20;
+  display: flex;
+  background: var(--brand);
+  /* iOS 홈 인디케이터에 버튼이 가리는 것이 이 페이지에서 가장 흔한 버그 */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.bar__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--bar-h);
+  color: var(--brand-fg);
+  font-size: 16px;
+  font-weight: 700;
+}
+.bar__btn--primary { background: var(--accent); color: #1a1a1a; }
+
+/* ---- 플로팅 퀵메뉴 ---- */
+.quick {
+  position: fixed;
+  right: 12px;
+  bottom: calc(var(--bar-h) + env(safe-area-inset-bottom) + 12px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.quick__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(27, 42, 74, 0.92);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* 앵커 이동 시 제목이 하단 바 뒤로 숨지 않게 */
+#apply { scroll-margin-top: 12px; }
