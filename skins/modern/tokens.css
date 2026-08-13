@@ -1,0 +1,41 @@
+/* modern — 넉넉한 여백, 라운드, 밝은 톤.
+   오피스텔·도시형생활주택처럼 젊은 층이 보는 현장용. 여백이 넓어 스크롤이 길어진다. */
+:root {
+  --bg: #fbfbfd;
+  --fg: #111827;
+  --muted: #6b7280;
+  --line: #e4e7ec;
+
+  --brand: #111827;
+  --brand-fg: #ffffff;
+  --accent: #3b82f6;
+  --accent-fg: #ffffff;
+
+  --surface: #ffffff;
+  --surface-2: #f2f4f7;
+  --danger: #d92d20;
+  --danger-bg: #fef3f2;
+
+  --notice-bg: #eff6ff;
+  --notice-fg: #1e3a5f;
+  --notice-title: #2563eb;
+
+  --quick-bg: rgba(17, 24, 39, 0.9);
+  --quick-fg: #ffffff;
+  --shadow: 0 4px 16px rgba(17, 24, 39, 0.18);
+
+  --radius: 12px;
+  --img-radius: 12px;
+  --gap: 12px;
+  --pad: 24px;
+  --sec-pad: 56px;
+  --maxw: 600px;
+  --bar-h: 64px;
+
+  --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --title-font: var(--font);
+  --title-size: 24px;
+  --title-weight: 700;
+  --title-ls: -0.03em;
+  --rule-w: 28px;
+}

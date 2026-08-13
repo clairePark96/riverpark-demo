@@ -1,20 +1,6 @@
-/* 스킨 간 차이는 전부 이 토큰만 교체해서 만든다 (Step 4).
-   레이아웃 규칙은 아래에 한 벌만 존재해야 한다 */
-:root {
-  --bg: #ffffff;
-  --fg: #1a1a1a;
-  --muted: #6b7280;
-  --line: #e5e7eb;
-  --brand: #1b2a4a;
-  --brand-fg: #ffffff;
-  --accent: #c9a227;
-  --danger: #d92d20;
-  --radius: 4px;
-  --gap: 8px;
-  --pad: 20px;
-  --maxw: 560px;   /* PC 에서도 폰 폭으로 보이게 고정 */
-  --bar-h: 60px;
-}
+/* 레이아웃 전용. 스킨 간 차이는 여기 두지 않는다.
+   색·여백·폰트는 전부 skins/<name>/tokens.css 의 변수로만 표현한다.
+   이 파일에 하드코딩된 색이 생기면 스킨을 바꿔도 그 부분만 안 바뀐다. */
 
 * { box-sizing: border-box; }
 
@@ -22,8 +8,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-        "Malgun Gothic", sans-serif;
+  font: 16px/1.6 var(--font);
   -webkit-text-size-adjust: 100%;
   /* 하단 고정 바에 마지막 콘텐츠가 가리지 않도록 확보 */
   padding-bottom: calc(var(--bar-h) + env(safe-area-inset-bottom) + 16px);
@@ -36,36 +21,40 @@ a { color: inherit; text-decoration: none; }
 
 /* ---- 안내 문구 ---- */
 .notice {
-  padding: 24px var(--pad);
-  background: var(--brand);
-  color: var(--brand-fg);
+  padding: var(--sec-pad) var(--pad);
+  background: var(--notice-bg);
+  color: var(--notice-fg);
   text-align: center;
 }
 .notice__title {
   margin: 0 0 8px;
+  font-family: var(--title-font);
   font-size: 19px;
-  font-weight: 700;
-  color: var(--accent);
+  font-weight: var(--title-weight);
+  color: var(--notice-title);
 }
 .notice__body { margin: 0; font-size: 15px; opacity: 0.9; }
 
 /* ---- 섹션 ---- */
-.sec { padding: 36px 0 8px; }
+.sec { padding: var(--sec-pad) 0 8px; }
 .sec__title {
   margin: 0 0 20px;
-  font-size: 22px;
-  font-weight: 700;
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  letter-spacing: var(--title-ls);
   text-align: center;
-  letter-spacing: -0.02em;
 }
 .sec__title::after {
   content: "";
   display: block;
-  width: 36px;
+  width: var(--rule-w);
   height: 2px;
   margin: 12px auto 0;
   background: var(--accent);
 }
+
+.sec__body img { border-radius: var(--img-radius); }
 
 .sec__body--grid2 {
   display: grid;
@@ -97,7 +86,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0 14px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--surface);
   color: var(--fg);
   /* iOS 는 16px 미만 입력창에 포커스가 가면 화면을 확대한다 */
   font-size: 16px;
@@ -105,7 +94,7 @@ a { color: inherit; text-decoration: none; }
   appearance: none;
 }
 .field input:focus,
-.field select:focus { outline: 2px solid var(--brand); outline-offset: -2px; }
+.field select:focus { outline: 2px solid var(--accent); outline-offset: -2px; }
 
 .agree {
   display: flex;
@@ -119,18 +108,23 @@ a { color: inherit; text-decoration: none; }
   width: 20px;
   height: 20px;
   margin: 2px 0 0;
-  accent-color: var(--brand);
+  accent-color: var(--accent);
 }
 
 .terms { font-size: 13px; color: var(--muted); }
 .terms summary { cursor: pointer; padding: 6px 0; }
-.terms p { margin: 4px 0 0; padding: 12px; background: #f7f8fa; border-radius: var(--radius); }
+.terms p {
+  margin: 4px 0 0;
+  padding: 12px;
+  background: var(--surface-2);
+  border-radius: var(--radius);
+}
 
 .form__err {
   margin: 16px 0 0;
   padding: 12px;
   border-radius: var(--radius);
-  background: #fef3f2;
+  background: var(--danger-bg);
   color: var(--danger);
   font-size: 14px;
   font-weight: 600;
@@ -154,7 +148,7 @@ a { color: inherit; text-decoration: none; }
 .foot {
   margin-top: 40px;
   padding: 24px var(--pad);
-  background: #f7f8fa;
+  background: var(--surface-2);
   color: var(--muted);
   font-size: 13px;
   text-align: center;
@@ -182,7 +176,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 16px;
   font-weight: 700;
 }
-.bar__btn--primary { background: var(--accent); color: #1a1a1a; }
+.bar__btn--primary { background: var(--accent); color: var(--accent-fg); }
 
 /* ---- 플로팅 퀵메뉴 ---- */
 .quick {
@@ -201,11 +195,11 @@ a { color: inherit; text-decoration: none; }
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(27, 42, 74, 0.92);
-  color: #fff;
+  background: var(--quick-bg);
+  color: var(--quick-fg);
   font-size: 13px;
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow);
 }
 
 /* 앵커 이동 시 제목이 하단 바 뒤로 숨지 않게 */

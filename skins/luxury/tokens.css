@@ -1,0 +1,42 @@
+/* luxury — 다크 배경, 세리프 제목, 하이엔드용.
+   다크 배경에서는 밝은 조감도가 더 살아난다. 대신 어두운 사진이 많은 현장에는 쓰지 않는다.
+   한글 세리프는 기기마다 설치 폰트가 달라 폴백을 여러 단계로 둔다. */
+:root {
+  --bg: #0e0e10;
+  --fg: #f2efe9;
+  --muted: #9a948c;
+  --line: #2a2a2e;
+
+  --brand: #17171a;
+  --brand-fg: #f2efe9;
+  --accent: #c8a96a;
+  --accent-fg: #14140f;
+
+  --surface: #17171a;
+  --surface-2: #141416;
+  --danger: #ff8b7d;
+  --danger-bg: #3a1c18;
+
+  --notice-bg: #141416;
+  --notice-fg: #d8d3ca;
+  --notice-title: #c8a96a;
+
+  --quick-bg: rgba(200, 169, 106, 0.92);
+  --quick-fg: #14140f;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+
+  --radius: 2px;
+  --img-radius: 0;
+  --gap: 6px;
+  --pad: 22px;
+  --sec-pad: 60px;
+  --maxw: 560px;
+  --bar-h: 62px;
+
+  --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --title-font: AppleMyungjo, "Nanum Myeongjo", "Noto Serif KR", Batang, serif;
+  --title-size: 25px;
+  --title-weight: 500;
+  --title-ls: 0.02em;
+  --rule-w: 52px;
+}

@@ -13,3 +13,6 @@
 !style.css
 !images/
 !images/*
+!skins/
+!skins/*
+!skins/*/*

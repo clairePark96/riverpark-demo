@@ -17,6 +17,16 @@
 <meta property="og:image" content="https://clairepark96.github.io/riverpark-demo/images/hero.jpeg">
 <meta property="og:url" content="https://clairepark96.github.io/riverpark-demo/">
 
+<!-- 시안은 ?skin= 으로 고른다. HTML 을 3벌로 복사하면 버그 하나를 3번 고쳐야 한다.
+     <link> 를 style.css 보다 먼저 넣어야 색이 한 번 번쩍였다가 바뀌지 않는다.
+     허용 목록으로만 받는다 — URL 값을 그대로 경로에 넣으면 임의 파일을 끼워넣을 수 있다 -->
+<script>
+  const SKINS = ['classic', 'modern', 'luxury'];
+  const param = new URLSearchParams(location.search).get('skin');
+  const skin = SKINS.includes(param) ? param : SKINS[0];
+  document.head.insertAdjacentHTML('beforeend',
+    `<link rel="stylesheet" href="skins/${skin}/tokens.css">`);
+</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
