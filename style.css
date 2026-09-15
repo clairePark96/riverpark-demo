@@ -70,6 +70,39 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--line);
 }
 
+/* ---- 스펙 목록 ----
+   교육자료 PPT 의 표를 이미지로 넣으면 폰에서 글자가 6px 이 되어 못 읽는다.
+   숫자는 전부 텍스트로 조판한다 */
+.spec { margin: 0; padding: 0 var(--pad); }
+.spec > div {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.spec > div:last-child { border-bottom: 0; }
+.spec dt { color: var(--muted); }
+.spec dd { margin: 0; }
+
+/* 이미지 뒤에 스펙이 붙을 때 간격 */
+.sec__body + .spec { margin-top: 20px; }
+
+/* ---- 핵심 포인트 ---- */
+.points { margin: 0; padding: 0 var(--pad); list-style: none; }
+.points li { position: relative; padding: 9px 0 9px 22px; font-size: 15px; }
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 17px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
 /* ---- 폼 ---- */
 .form { padding: 0 var(--pad); }
 .field { display: block; margin-bottom: 16px; }
