@@ -3,6 +3,7 @@ body { --font: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-
 .site-head h1, .offer h2, .sec__title { font-family: var(--title-font); }
 .site-head { padding: 36px var(--pad) 30px; background: var(--brand); color: var(--brand-fg); }
 .eyebrow, .section-kicker { margin: 0 0 10px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.section-kicker { font-weight: 400; letter-spacing: .02em; text-transform: none; }
 .site-head .eyebrow { color: var(--notice-title); }
 .site-head h1 { margin: 0; font-size: clamp(30px, 8vw, 46px); line-height: 1.18; letter-spacing: -.05em; font-weight: 400; }
 .site-head h1 strong { font-weight: 700; }
