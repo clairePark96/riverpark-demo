@@ -25,7 +25,8 @@ body { --font: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-
 .sec__title::after { display: none; }
 .section-lead { margin: 0 0 23px; color: var(--muted); font-size: 16px; }
 .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 0 var(--pad) 24px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.summary-grid div:last-child { grid-column: 1 / -1; }
+.summary-grid div:first-child { grid-column: 1 / -1; min-height: 118px; padding: 18px 20px; }
+.summary-grid div:first-child dd strong { font-size: 38px; }
 .summary-grid div { min-height: 100px; padding: 14px; background: var(--surface); }
 .summary-grid dt { margin-bottom: 5px; color: var(--muted); font-size: 14px; }
 .summary-grid dd { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.45; }
